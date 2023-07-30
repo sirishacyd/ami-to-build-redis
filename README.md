@@ -41,8 +41,33 @@ To build the AMI, follow the below steps:
    packer build packer_template.json
    ```
 
-   Packer will begin building the AMI. This may take a few minutes.
+   - Packer will begin building the AMI. This may take a few minutes.
 
-   Once the build is complete, Packer will output the ID of the new AMI.
+   - Once the build is complete, Packer will output the ID of the new AMI.
 
+### Log File For the AMI image Built done by packer 
+[LogFile](packer_build.log)
+### AMI Built by Packer 
+```
 
+==> Wait completed after 6 minutes 53 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> amazon-ebs: AMIs were created:
+ap-south-1: ami-06a1ded2dc005181d
+
+```
+![init](screenshots/ami_built.png)
+### Launching Instance with AMI that has redis built in using packer
+![init](screenshots/launched_instance.png)
+### Loginng in to the Instance using AMI we have built
+```
+ssh -i "test.pem" ubuntu@65.1.2.119
+```
+![init](screenshots/logged_in.png)
+### Running Redis Server
+```
+cd /home/redisbuilder/redis/src
+./redis-server
+```
+![init](screenshots/redis_run.png)
